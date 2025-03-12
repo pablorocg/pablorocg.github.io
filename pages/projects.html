@@ -1,0 +1,203 @@
+---
+layout: default
+title: Projects - Pablo Rocamora García
+---
+
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-bold text-center mb-12 text-gray-800">Projects</h1>
+        
+        <!-- Featured Projects -->
+        <div class="mb-20">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-8 pb-2 border-b border-gray-200">Featured Projects</h2>
+            
+            <!-- Project 1 -->
+            <div class="mb-16">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-1/2 mb-6 lg:mb-0 lg:pr-8">
+                        <img src="/assets/img/projects/gnn-tractography.jpg" alt="GNN-based Tractography Segmentation" class="w-full h-auto rounded-lg shadow-lg">
+                    </div>
+                    <div class="lg:w-1/2">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">GNN-based Method for Tractography Segmentation</h3>
+                        <p class="text-gray-600 mb-4">
+                            This project focuses on developing a novel method for white matter tractography segmentation 
+                            using Graph Neural Networks (GNNs) and supervised contrastive learning. 
+                            The method significantly improves the accuracy of segmenting white matter fibers in brain imaging.
+                        </p>
+                        <div class="mb-6">
+                            <h4 class="text-lg font-medium text-gray-800 mb-2">Key Features:</h4>
+                            <ul class="list-disc list-inside text-gray-600 ml-4 space-y-1">
+                                <li>Representation of tractography data as a graph structure</li>
+                                <li>Novel supervised contrastive learning approach for better clustering of similar fibers</li>
+                                <li>State-of-the-art accuracy in segmenting challenging fiber tracts</li>
+                                <li>Robust performance even with partial or noisy input data</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">PyTorch</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Torch Geometric</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Docker</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Deep Learning</span>
+                        </div>
+                        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition shadow-md inline-flex items-center">
+                            View Project Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div>
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-1/2 mb-6 lg:mb-0 lg:pr-8">
+                        <img src="/assets/img/projects/rag-system.jpg" alt="RAG Retrieval System" class="w-full h-auto rounded-lg shadow-lg">
+                    </div>
+                    <div class="lg:w-1/2">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Response Retrieval System using RAG</h3>
+                        <p class="text-gray-600 mb-4">
+                            This project implements a sophisticated response retrieval system using the Retrieval-Augmented 
+                            Generation (RAG) technique. By combining Large Language Models with efficient retrieval mechanisms, 
+                            the system provides more accurate and contextually relevant responses.
+                        </p>
+                        <div class="mb-6">
+                            <h4 class="text-lg font-medium text-gray-800 mb-2">Key Features:</h4>
+                            <ul class="list-disc list-inside text-gray-600 ml-4 space-y-1">
+                                <li>Efficient document indexing and retrieval using vector databases</li>
+                                <li>Integration with modern LLMs for generating contextually appropriate responses</li>
+                                <li>BERT-based encoding for improved semantic understanding of queries</li>
+                                <li>Customizable knowledge base for domain-specific applications</li>
+                            </ul>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Ollama</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">HuggingFace</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">PyTorch</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">LlamaIndex</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Docker</span>
+                        </div>
+                        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition shadow-md inline-flex items-center">
+                            View Project Details <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- All Projects -->
+        <div>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-8 pb-2 border-b border-gray-200">All Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <img src="/assets/img/projects/gnn-tractography.jpg" alt="GNN Tractography" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Brain Tracts Segmentation using 3D CNNs</h3>
+                        <p class="text-gray-600 mb-4">Developed a volumetric segmentation method for white matter tracts in tractography, generating 3D maps of neural connections.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">TensorFlow</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Dipy</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project Card 4 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <img src="/assets/img/projects/bioprocess-simulation.jpg" alt="Bioprocess Simulation" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bioprocess Simulation Tool</h3>
+                        <p class="text-gray-600 mb-4">Contributed to the development of a bioprocess simulation tool for the biotech industry at Cultzyme.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Biotech</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Simulation</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project Card 5 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <img src="/assets/img/projects/medical-image-analysis.jpg" alt="Medical Image Analysis" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Medical Image Analysis Platform</h3>
+                        <p class="text-gray-600 mb-4">Created a platform for analyzing medical images using computer vision and machine learning techniques.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">OpenCV</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Scikit-learn</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project Card 6 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <img src="/assets/img/projects/healthcare-app.jpg" alt="Healthcare App" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Healthcare Monitoring App</h3>
+                        <p class="text-gray-600 mb-4">Developed a mobile application for remote patient monitoring and health data analysis.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">React Native</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Firebase</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-6">More projects are being documented and will be added soon.</p>
+                <a href="/blog" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition shadow-md inline-flex items-center">
+                    Check My Blog for Project Updates <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>text-xl font-semibold text-gray-800 mb-2">Response Retrieval System using RAG</h3>
+                        <p class="text-gray-600 mb-4">Implemented a response retrieval system using the Retrieval-Augmented Generation (RAG) technique with Large Language Models and BERT encoders.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">HuggingFace</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">LLMs</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project Card 3 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <img src="/assets/img/projects/3d-brain-tracts.jpg" alt="Brain Tracts" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">GNN-based Method for Tractography Segmentation</h3>
+                        <p class="text-gray-600 mb-4">Developed a novel method using graph neural networks (GNNs) combined with supervised contrastive learning for white matter fibers segmentation.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Torch Geometric</span>
+                        </div>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Learn more <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project Card 2 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md transition duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <img src="/assets/img/projects/rag-system.jpg" alt="RAG System" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="
