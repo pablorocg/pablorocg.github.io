@@ -1,0 +1,23 @@
+# Configuración básica de Jekyll
+title: Pablo Rocamora García
+description: Personal website and blog
+url: "https://pablorocg.github.io"
+baseurl: ""
+
+# Configuración del blog
+permalink: /blog/:year/:month/:day/:title/
+
+# Configuraciones de colecciones
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Configuración de markdown
+markdown: kramdown
+highlighter: rouge
+
+# Excluir archivos y directorios
+exclude:
+  - README.md
+  - .gitignore
