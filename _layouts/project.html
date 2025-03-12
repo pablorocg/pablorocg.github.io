@@ -1,0 +1,130 @@
+---
+layout: default
+---
+
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <!-- Breadcrumbs -->
+        <nav class="text-sm mb-8 max-w-5xl mx-auto" aria-label="Breadcrumb">
+            <ol class="flex flex-wrap items-center space-x-1">
+                <li><a href="/" class="text-gray-500 hover:text-blue-600">Home</a></li>
+                <li><span class="text-gray-400 mx-1">/</span></li>
+                <li><a href="/pages/projects.html" class="text-gray-500 hover:text-blue-600">Projects</a></li>
+                <li><span class="text-gray-400 mx-1">/</span></li>
+                <li><span class="text-gray-700">{{ page.title }}</span></li>
+            </ol>
+        </nav>
+
+        <div class="max-w-5xl mx-auto">
+            <!-- Project Header -->
+            <header class="mb-12">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">{{ page.title }}</h1>
+                
+                <!-- Tags/Skills -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                    {% for skill in page.skills %}
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+                
+                <!-- Project Summary -->
+                <p class="text-xl text-gray-600">{{ page.summary }}</p>
+            </header>
+
+            <!-- Featured Image -->
+            {% if page.featured_image %}
+            <div class="mb-12">
+                <img src="{{ page.featured_image }}" alt="{{ page.title }}" class="w-full h-auto rounded-lg shadow-lg">
+            </div>
+            {% endif %}
+
+            <!-- Project Content -->
+            <div class="prose prose-blue max-w-none mb-12">
+                {{ content }}
+            </div>
+
+            <!-- Project Details -->
+            <div class="mb-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Date -->
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Project Timeline</h3>
+                    <p class="text-gray-600">{{ page.date_range | default: page.date }}</p>
+                </div>
+
+                <!-- Role -->
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">My Role</h3>
+                    <p class="text-gray-600">{{ page.role }}</p>
+                </div>
+
+                <!-- Repository/Demo Links -->
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Resources</h3>
+                    <div class="flex flex-col space-y-2">
+                        {% if page.repository %}
+                        <a href="{{ page.repository }}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            <i class="fab fa-github mr-2"></i> GitHub Repository
+                        </a>
+                        {% endif %}
+                        
+                        {% if page.demo_link %}
+                        <a href="{{ page.demo_link }}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                        </a>
+                        {% endif %}
+                        
+                        {% if page.paper_link %}
+                        <a href="{{ page.paper_link }}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            <i class="fas fa-file-pdf mr-2"></i> Research Paper
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery (if available) -->
+            {% if page.gallery %}
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Project Gallery</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {% for image in page.gallery %}
+                    <div class="overflow-hidden rounded-lg shadow-md">
+                        <img src="{{ image.url }}" alt="{{ image.alt }}" class="w-full h-64 object-cover hover:opacity-90 transition">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Related Projects -->
+            {% if page.related_projects %}
+            <div class="mb-12">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Related Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {% for project_id in page.related_projects %}
+                        {% assign project = site.projects | where: "slug", project_id | first %}
+                        {% if project %}
+                        <a href="{{ project.url }}" class="bg-gray-100 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition group">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2 group-hover:text-blue-600">{{ project.title }}</h3>
+                                <p class="text-gray-600 mb-4">{{ project.summary | truncate: 100 }}</p>
+                                <span class="text-blue-600 group-hover:text-blue-800 inline-flex items-center">
+                                    Learn more <i class="fas fa-arrow-right ml-2"></i>
+                                </span>
+                            </div>
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Back to Projects -->
+            <div class="mt-12">
+                <a href="/pages/projects.html" class="inline-flex items-center px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition">
+                    <i class="fas fa-th-large mr-2"></i> Browse All Projects
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

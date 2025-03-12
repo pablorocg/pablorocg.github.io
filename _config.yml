@@ -1,23 +1,186 @@
-# Configuración básica de Jekyll
+########################
+# Site Settings
+########################
 title: Pablo Rocamora García
-description: Personal website and blog
+tagline: Biomedical Engineer & AI Specialist
+description: Personal website and blog of Pablo Rocamora García, a biomedical engineer specializing in AI, machine learning, and medical imaging with a focus on bridging research and real-world applications.
+keywords: biomedical engineering, AI, machine learning, medical imaging, tractography, GNN, deep learning, computer vision, data science
 url: "https://pablorocg.github.io"
 baseurl: ""
+lang: "en"
+timezone: Europe/Copenhagen
+encoding: "utf-8"
 
-# Configuración del blog
-permalink: /blog/:year/:month/:day/:title/
+########################
+# Author Information
+########################
+author:
+  name: Pablo Rocamora García
+  email: rocamoragarcia.pablo@gmail.com
+  twitter: # your Twitter username (without @)
+  github: pablorocg
+  linkedin: pablo-rocamora-garcia
+  bio: Biomedical Engineer & AI Specialist focusing on machine learning and medical imaging.
+  location: Copenhagen, Denmark
 
-# Configuraciones de colecciones
+########################
+# Navigation
+########################
+navigation:
+  - text: About
+    url: "/#about"
+  - text: Experience
+    url: "/#experience"
+  - text: Education
+    url: "/#education"
+  - text: Projects
+    url: "/pages/projects.html"
+  - text: Skills
+    url: "/#skills"
+  - text: Research
+    url: "/pages/research.html"
+  - text: Blog
+    url: "/blog"
+  - text: CV
+    url: "/pages/cv.html"
+  - text: Contact
+    url: "/#contact"
+
+########################
+# Collections
+########################
 collections:
   posts:
     output: true
     permalink: /blog/:year/:month/:day/:title/
+  projects:
+    output: true
+    permalink: /projects/:slug/
 
-# Configuración de markdown
+########################
+# Default Settings
+########################
+defaults:
+  # Default layout for all pages
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  # Default layout and settings for posts
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: false
+      share: true
+      related: true
+  # Default layout and settings for projects
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+      share: true
+
+########################
+# Markdown Settings
+########################
 markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 highlighter: rouge
 
-# Excluir archivos y directorios
+########################
+# Pagination Settings
+########################
+pagination:
+  enabled: true
+  per_page: 10
+  permalink: '/page/:num/'
+  title: ':title - Page :num'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+
+########################
+# Search Settings
+########################
+search: true
+search_full_content: true
+search_provider: lunr
+
+########################
+# SEO Settings
+########################
+social:
+  name: Pablo Rocamora García
+  links:
+    - https://linkedin.com/in/pablo-rocamora-garcia
+    - https://github.com/pablorocg
+
+# Open Graph default image
+og_image: /assets/img/profile.jpg
+twitter:
+  username: # your Twitter username (without @)
+  card: summary_large_image
+
+# Schema.org markup
+schema:
+  type: Person
+  name: Pablo Rocamora García
+  email: rocamoragarcia.pablo@gmail.com
+  url: https://pablorocg.github.io
+  sameAs:
+    - https://linkedin.com/in/pablo-rocamora-garcia
+    - https://github.com/pablorocg
+
+########################
+# Building Settings
+########################
+# Build settings
+permalink: /blog/:year/:month/:day/:title/
+future: false
+incremental: false
+sass:
+  style: compressed
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Exclude from processing
 exclude:
   - README.md
   - .gitignore
+  - .sass-cache/
+  - .jekyll-cache/
+  - .bundle/
+  - vendor/bundle/
+  - node_modules/
+  - Gemfile
+  - Gemfile.lock
+
+# Include specific files
+include:
+  - _pages
+  - .htaccess
+
+########################
+# Multi-Language Support
+########################
+languages: ["en", "es"]
+default_lang: "en"
+exclude_from_localization: ["assets", "images", "css", "js", "_posts", "node_modules"]
+parallel_localization: true
