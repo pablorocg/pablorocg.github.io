@@ -1,34 +1,176 @@
 ---
 layout: default
 ---
-
-<section class="py-16 bg-white">
+<article itemscope itemtype="http://schema.org/BlogPosting" class="py-16 bg-white">
     <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto">
-            <h1 class="text-3xl font-bold text-gray-800 mb-3">{{ page.title }}</h1>
-            <p class="text-gray-600 mb-6">{{ page.date | date: "%B %d, %Y" }}</p>
-            
+            <!-- Breadcrumbs -->
+            <nav class="text-sm mb-6" aria-label="Breadcrumb">
+                <ol class="flex flex-wrap items-center space-x-1">
+                    <li><a href="/" class="text-gray-500 hover:text-blue-600">Home</a></li>
+                    <li><span class="text-gray-400 mx-1">/</span></li>
+                    <li><a href="/blog" class="text-gray-500 hover:text-blue-600">Blog</a></li>
+                    <li><span class="text-gray-400 mx-1">/</span></li>
+                    <li><span class="text-gray-700">{{ page.title }}</span></li>
+                </ol>
+            </nav>
+
+            <!-- Header -->
+            <header class="mb-8">
+                <!-- Categories -->
+                {% if page.categories %}
+                <div class="mb-4">
+                    {% for category in page.categories %}
+                    <a href="/blog/categories/{{ category | slugify }}" class="text-blue-600 hover:text-blue-800 text-sm mr-3">{{ category }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Title -->
+                <h1 itemprop="headline" class="text-4xl font-bold text-gray-800 mb-4 leading-tight">{{ page.title }}</h1>
+
+                <!-- Post Meta -->
+                <div class="flex flex-wrap items-center text-gray-600 mb-6">
+                    <!-- Date -->
+                    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" class="flex items-center mr-6">
+                        <i class="far fa-calendar-alt mr-2"></i>
+                        {{ page.date | date: "%B %d, %Y" }}
+                    </time>
+
+                    <!-- Reading Time -->
+                    {% assign words = content | strip_html | number_of_words %}
+                    <span class="flex items-center mr-6">
+                        <i class="far fa-clock mr-2"></i>
+                        {% if words < 270 %}1{% else %}{{ words | divided_by: 135 }}{% endif %} min read
+                    </span>
+
+                    <!-- Author -->
+                    <span itemprop="author" itemscope itemtype="http://schema.org/Person" class="flex items-center">
+                        <i class="far fa-user-circle mr-2"></i>
+                        <span itemprop="name">Pablo Rocamora García</span>
+                    </span>
+                </div>
+            </header>
+
+            <!-- Featured Image -->
             {% if page.image %}
-            <img src="{{ page.image }}" alt="{{ page.title }}" class="rounded-lg shadow-md mb-6 w-full">
+            <figure class="mb-8">
+                <img src="{{ page.image }}" alt="{{ page.title }}" itemprop="image" class="rounded-lg shadow-md w-full h-auto object-cover" loading="lazy">
+                {% if page.image_caption %}
+                <figcaption class="text-sm text-center text-gray-500 mt-2">{{ page.image_caption }}</figcaption>
+                {% endif %}
+            </figure>
             {% endif %}
-            
-            <div class="prose prose-blue max-w-none">
+
+            <!-- Content -->
+            <div itemprop="articleBody" class="prose prose-blue lg:prose-lg max-w-none mb-12">
                 {{ content }}
             </div>
-            
+
+            <!-- Tags -->
             <div class="mt-8 pt-6 border-t border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">Tags</h3>
                 <div class="flex flex-wrap gap-2">
                     {% for tag in page.tags %}
-                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">{{ tag }}</span>
+                    <a href="/blog/tags/{{ tag | slugify }}" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:bg-blue-200 transition">{{ tag }}</a>
                     {% endfor %}
                 </div>
             </div>
-            
-            <div class="mt-8">
-                <a href="/blog" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
-                    <i class="fas fa-arrow-left mr-2"></i> Back to Blog
+
+            <!-- Share Post -->
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">Share This Post</h3>
+                <div class="flex space-x-4">
+                    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url | url_encode }}" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700" aria-label="Share on Twitter">
+                        <i class="fab fa-twitter text-lg"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url | url_encode }}&title={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-blue-900" aria-label="Share on LinkedIn">
+                        <i class="fab fa-linkedin-in text-lg"></i>
+                    </a>
+                    <a href="mailto:?subject={{ page.title | url_encode }}&body=Check out this article: {{ site.url }}{{ page.url | url_encode }}" class="text-gray-700 hover:text-gray-900" aria-label="Share via Email">
+                        <i class="fas fa-envelope text-lg"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Author Bio -->
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <div class="flex flex-col sm:flex-row items-center sm:items-start">
+                    <img src="/assets/img/profile.jpg" alt="Pablo Rocamora García" class="w-20 h-20 rounded-full object-cover mb-4 sm:mb-0 sm:mr-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">About the Author</h3>
+                        <p class="text-gray-600 mb-3">Biomedical Engineer & AI Specialist focusing on machine learning and medical imaging. Currently pursuing an MSc in Biomedical Engineering at the Technical University of Denmark.</p>
+                        <div class="flex space-x-3">
+                            <a href="https://linkedin.com/in/pablo-rocamora-garcia" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/pablorocg" target="_blank" rel="noopener noreferrer" class="text-gray-800 hover:text-black">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="mailto:rocamoragarcia.pablo@gmail.com" class="text-gray-700 hover:text-gray-900">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post Navigation -->
+            <nav class="mt-12 pt-6 border-t border-gray-200" aria-label="Post navigation">
+                <div class="flex flex-col sm:flex-row justify-between">
+                    {% if page.previous.url %}
+                    <a href="{{ page.previous.url }}" class="group mb-4 sm:mb-0">
+                        <span class="block text-sm text-gray-500 mb-1">Previous Article</span>
+                        <span class="text-blue-600 group-hover:text-blue-800 font-medium inline-flex items-center">
+                            <i class="fas fa-arrow-left mr-2"></i>
+                            {{ page.previous.title }}
+                        </span>
+                    </a>
+                    {% endif %}
+                    
+                    {% if page.next.url %}
+                    <a href="{{ page.next.url }}" class="group text-right">
+                        <span class="block text-sm text-gray-500 mb-1">Next Article</span>
+                        <span class="text-blue-600 group-hover:text-blue-800 font-medium inline-flex items-center justify-end">
+                            {{ page.next.title }}
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </span>
+                    </a>
+                    {% endif %}
+                </div>
+            </nav>
+
+            <!-- Back to Blog -->
+            <div class="mt-12">
+                <a href="/blog" class="inline-flex items-center px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition">
+                    <i class="fas fa-th-large mr-2"></i> Back to Blog
                 </a>
             </div>
         </div>
     </div>
-</section>
+</article>
+
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ page.title }}",
+  "image": "{{ site.url }}{{ page.image }}",
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+  "author": {
+    "@type": "Person",
+    "name": "Pablo Rocamora García"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Pablo Rocamora García",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/assets/img/profile.jpg"
+    }
+  },
+  "description": "{% if page.description %}{{ page.description }}{% else %}{{ content | strip_html | truncatewords: 30 }}{% endif %}"
+}
+</script>
